@@ -1,0 +1,21 @@
+Une application qui permet d'ajouter et supprimer des dragons d'une liste définie.
+. constante - actions.js
+. action - actons-types.js
+. reducers - l'ensemble des reducers
+
+contextualiser votre store - index.js
+- Affichez la liste des dragons dans la colonne de droite :
+
+un titre : Dragon List, number of dragon(s) 3. Il va compter le nombre d'élement ajouter. 
+un label : Ajouter un dragon 
+un input : add dragon...
+
+bouton : ADD
+quand je clique sur add, j'affiche l'élément à droite.
+
+normalisation des données
+
+RappelJS, présentation React, JSX, Props, gestion event, state, state manager, context api et useReducer
+react redux react-redux
+store, reducer, nested object, provider, contextualiser l'app, useSelector, useDispatch, redux devtools, middleware, action payload, action creator, 
+  

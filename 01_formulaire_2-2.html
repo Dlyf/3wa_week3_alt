@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <!-- babel => compilation du JSX -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style>
+      .heading {
+        color: purple;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+      const Form = (props) => {
+        //
+        const [base, setBase] = React.useState(0);
+        const [multiples, setMultiples] = React.useState([]);
+        const [errorMessage, setErrorMessage] = React.useState("");
+        const [selectedOption, setSelectedOption] = React.useState("");
+
+        const handleChange = (e) => {
+          setBase(Number(e.target.value));
+        };
+
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          if (base <= 0) {
+            setErrorMessage("Veuillez sélectionner un nombre valide.");
+            setMultiples([]);
+          } else {
+          setErrorMessage("");
+          const newMultiples = [];
+          for (let i = base; i <= 100; i += base) {
+              newMultiples.push(i);
+          }
+          setMultiples(newMultiples);
+          }
+        };
+
+        const Option = (props) => {
+            const options = [];
+
+            for (let i = 0; i <= 100; i++) {
+                options.push(<Option value={base} key={i}>{base}</Option>);
+            }
+            // return 
+        }
+        return (
+          <React.Fragment>
+            <form onSubmit={handleSubmit}>
+              <select value={base} onChange={handleChange}>
+                <Option />
+              </select>
+              <input type="submit" value="Afficher les multiples" />
+            </form>
+
+            {errorMessage && <p>{errorMessage}</p>}
+
+            <h2>Multiples de {base} :</h2>
+            <ul>
+              {multiples.map((multiple) => (
+                <li key={multiple}>{multiple}</li>
+              ))}
+            </ul>
+          </React.Fragment>
+        );
+      };
+
+      // Rendu dans le DOM
+      ReactDOM.render(<Form />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
